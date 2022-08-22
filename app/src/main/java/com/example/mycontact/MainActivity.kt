@@ -1,7 +1,6 @@
 package com.example.mycontact
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -29,6 +28,10 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -39,7 +42,12 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
         return when (item.itemId) {
+            R.id.action_add -> {
+                navController.navigate(R.id.action_ContactFragment_to_AddContactFragment)
+                return true
+            }
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
@@ -50,4 +58,10 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+    // public variable accessible system wide
+    companion object {
+        val contactList = ArrayList<Contact>()
+    }
+
 }

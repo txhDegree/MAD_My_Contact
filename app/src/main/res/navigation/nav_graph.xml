@@ -14,6 +14,10 @@
         <action
             android:id="@+id/action_ContactFragment_to_ProfileFragment"
             app:destination="@id/ProfileFragment" />
+        <action
+            android:id="@+id/action_ContactFragment_to_AddContactFragment"
+            app:destination="@id/AddContactFragment"
+            app:popUpTo="@id/ContactFragment" />
     </fragment>
     <fragment
         android:id="@+id/ProfileFragment"
@@ -24,5 +28,19 @@
         <action
             android:id="@+id/action_ProfileFragment_to_ContactFragment"
             app:destination="@id/ContactFragment" />
+        <action
+            android:id="@+id/action_ProfileFragment_to_AddContactFragment"
+            app:destination="@id/AddContactFragment"
+            app:popUpTo="@id/ProfileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/AddContactFragment"
+        android:name="com.example.mycontact.AddContactFragment"
+        android:label="@string/mycontact"
+        tools:layout="@layout/fragment_add_contact2" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.mycontact.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>
